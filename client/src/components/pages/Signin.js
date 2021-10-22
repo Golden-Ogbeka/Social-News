@@ -1,8 +1,24 @@
 import React from 'react';
 import BannerImage from '../../assets/banner.jpeg';
 import { UserIcon } from '@heroicons/react/outline';
+import axios from 'axios';
 
 function Signin() {
+	const signinUser = async (e) => {
+		e.preventDefault();
+		try {
+			// const response = await axios.post(
+			// 	`https://api.kexzegroup.com/api/v1/vendor/signUp`,
+			// 	{
+			// 		email: 'abfatahi96@gmail.com',
+			// 		password: 'Examplepassword123!',
+			// 	}
+			// );
+			// console.log(response);
+		} catch (error) {
+			console.log(error.response.data);
+		}
+	};
 	return (
 		<div className='bg-white static flex justify-center min-h-screen min-w-screen'>
 			<img
@@ -48,7 +64,10 @@ function Signin() {
 						placeholder='Password'
 						type='password'
 					/>
-					<button className='w-32 bg-purple-900 pt-4 pb-4 rounded text-white text-sm mb-10 font-semibold'>
+					<button
+						onClick={(e) => signinUser(e)}
+						className='w-32 bg-purple-900 pt-4 pb-4 rounded text-white text-sm mb-10 font-semibold'
+					>
 						SIGN IN
 					</button>
 				</form>
