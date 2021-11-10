@@ -1,8 +1,11 @@
 import React from 'react';
 import Logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
+import AppContext from '../utils/AppContext';
 
 function Navbar() {
+	const { contextVariables, setContextVariables } =
+		React.useContext(AppContext);
 	return (
 		<>
 			{/* Logged out */}
@@ -35,7 +38,16 @@ function Navbar() {
 						</Link>
 					</div>
 
-					<Link to='/signup' className='text-purple-900 font-bold text-sm'>
+					<Link
+						to='#/'
+						className='text-purple-900 font-bold text-sm'
+						onClick={() =>
+							setContextVariables({
+								...contextVariables,
+								signOutModalState: true,
+							})
+						}
+					>
 						sign out
 					</Link>
 				</div>
