@@ -10,11 +10,14 @@ import {
 	LogoutIcon,
 } from '@heroicons/react/outline';
 
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import AppContext from '../utils/AppContext';
 
 function Sidebar() {
+	const { contextVariables, setContextVariables } =
+		React.useContext(AppContext);
 	return (
-		<nav className='w-1/6 bg-white h-full fixed  shadow-inner'>
+		<nav className='w-1/6 bg-white h-full fixed  shadow-inner hidden md:block'>
 			<NavLink
 				exact
 				to='/newsStand'
@@ -99,18 +102,24 @@ function Sidebar() {
 				<CogIcon width={24} height={24} className='mr-5' />
 				<span>Settings</span>
 			</NavLink>
-			<NavLink
+			<Link
 				exact
-				to='/profile'
+				to='#/'
 				className='flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900'
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
 				}}
+				onClick={() =>
+					setContextVariables({
+						...contextVariables,
+						signOutModalState: true,
+					})
+				}
 			>
 				<LogoutIcon width={24} height={24} className='mr-5' />
 				<span>Sign out</span>
-			</NavLink>
+			</Link>
 		</nav>
 	);
 }

@@ -4,8 +4,9 @@ A web application where users can create posts and comment on posts from other u
 
 ## Tools used
 
-ReactJS, Tailwind CSS, ExpressJS, NodeJS, MongoDB and Socket IO for push notifications
-
+- Frontend: ReactJS, Tailwind CSS, Headless UI
+- Backend: ExpressJS, NodeJS, MongoDB
+- Push notifications: Socket IO
 
 ## User Interface Design
 

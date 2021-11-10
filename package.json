@@ -28,6 +28,7 @@
 	},
 	"homepage": "https://github.com/Golden-Ogbeka/Social-News#readme",
 	"dependencies": {
+		"@headlessui/react": "^1.4.2",
 		"cors": "^2.8.5",
 		"crypto-js": "^4.1.1",
 		"dotenv": "^10.0.0",
