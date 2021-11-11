@@ -13,6 +13,7 @@ import {
 	InformationCircleIcon,
 	LogoutIcon,
 } from '@heroicons/react/outline';
+import FloatingAccessButton from './components/layout/FloatingAccessButton';
 
 function App() {
 	const [contextVariables, setContextVariables] = React.useState({
@@ -55,6 +56,7 @@ function App() {
 				contextVariables={contextVariables}
 				setContextVariables={setContextVariables}
 			/>
+			<FloatingAccessButton />
 
 			{/* Routes */}
 			<Switch>
