@@ -14,6 +14,7 @@ import {
 	LogoutIcon,
 } from '@heroicons/react/outline';
 import FloatingAccessButton from './components/layout/FloatingAccessButton';
+import PageNotFound from './components/pages/PageNotFound';
 
 function App() {
 	const [contextVariables, setContextVariables] = React.useState({
@@ -65,6 +66,7 @@ function App() {
 				<Route path='/signup' component={Signup} />
 				<Route path='/newsStand' component={NewsStand} />
 				<Route path='/profile' component={Profile} />
+				<Route path='*' component={PageNotFound} />
 			</Switch>
 		</AppContext.Provider>
 	);

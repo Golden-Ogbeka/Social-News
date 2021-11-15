@@ -9,7 +9,7 @@ function FloatingAccessButton() {
 		React.useContext(AppContext);
 	return (
 		<>
-			<Popover className='absolute bottom-5 right-5 md:hidden'>
+			<Popover className=' bottom-5 right-5 md:hidden z-10 fixed'>
 				<Popover.Button>
 					<button className='w-16 h-16 bg-purple-900  rounded-full text-white justify-center flex items-center focus:bg-purple-500 '>
 						<MenuIcon className='w-8 h-8' />
