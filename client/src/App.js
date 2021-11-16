@@ -19,6 +19,7 @@ import PageNotFound from './components/pages/PageNotFound';
 function App() {
 	const [contextVariables, setContextVariables] = React.useState({
 		signOutModalState: false,
+		loadingIndicatorState: false,
 		feedback: {
 			type: '',
 			message: '',
@@ -41,6 +42,29 @@ function App() {
 			});
 		}, contextVariables.feedback.timeout);
 	};
+
+	const signOutUser = async () => {
+		setContextVariables({
+			...contextVariables,
+			loadingIndicatorState: true,
+		});
+		// Signout function here
+		setContextVariables((oldState) => {
+			return {
+				...oldState,
+				signOutModalState: false,
+				loadingIndicatorState: false,
+				feedback: {
+					...oldState.feedback,
+					open: true,
+					message: 'Sign out successful',
+					type: 'success',
+				},
+			};
+		});
+
+		hideFeedback();
+	};
 	return (
 		<AppContext.Provider
 			value={{ contextVariables, setContextVariables, hideFeedback }}
@@ -51,9 +75,13 @@ function App() {
 			<SignOutModal
 				contextVariables={contextVariables}
 				setContextVariables={setContextVariables}
-				hideFeedback={hideFeedback}
+				signOutUser={signOutUser}
 			/>
 			<Feedback
+				contextVariables={contextVariables}
+				setContextVariables={setContextVariables}
+			/>
+			<LoadingIndicator
 				contextVariables={contextVariables}
 				setContextVariables={setContextVariables}
 			/>
@@ -75,7 +103,7 @@ function App() {
 const SignOutModal = ({
 	contextVariables,
 	setContextVariables,
-	hideFeedback,
+	signOutUser,
 }) => {
 	return (
 		<Transition.Root show={contextVariables.signOutModalState}>
@@ -138,19 +166,7 @@ const SignOutModal = ({
 								<button
 									type='button'
 									className='w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-purple-900 text-base font-medium text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:ml-3 sm:w-auto sm:text-sm'
-									onClick={() => {
-										setContextVariables({
-											...contextVariables,
-											signOutModalState: false,
-											feedback: {
-												...contextVariables.feedback,
-												open: true,
-												message: 'Sign out successful',
-												type: 'success',
-											},
-										});
-										hideFeedback();
-									}}
+									onClick={() => signOutUser()}
 								>
 									Sign out
 								</button>
@@ -266,6 +282,49 @@ const Feedback = ({ contextVariables, setContextVariables }) => {
 								</button>
 							</div>
 						</div>
+					</Transition.Child>
+				</div>
+			</Dialog>
+		</Transition.Root>
+	);
+};
+
+const LoadingIndicator = ({ contextVariables, setContextVariables }) => {
+	return (
+		<Transition.Root show={contextVariables.loadingIndicatorState}>
+			<Dialog
+				open={contextVariables.loadingIndicatorState}
+				onClose={() => null}
+				className='fixed z-10 inset-0 overflow-y-auto text-center'
+			>
+				<Dialog.Overlay className='fixed inset-0  bg-opacity-75 transition-opacity' />
+				<div className='flex items-center justify-center min-h-screen'>
+					<Transition.Child
+						enter='ease-out duration-300'
+						enterFrom='opacity-0'
+						enterTo='opacity-100'
+						leave='ease-in duration-200'
+						leaveFrom='opacity-100'
+						leaveTo='opacity-0'
+					>
+						<Dialog.Overlay className='fixed inset-0 bg-black opacity-30' />
+					</Transition.Child>
+
+					<Transition.Child
+						enter='ease-out duration-300'
+						enterFrom='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
+						enterTo='opacity-100 translate-y-0 sm:scale-100'
+						leave='ease-in duration-200'
+						leaveFrom='opacity-100 translate-y-0 sm:scale-100'
+						leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
+					>
+						<div
+							className='border-purple-200 border-p border-8 border-solid border-t-8 w-32 h-32 animate-spin inline-block'
+							style={{
+								borderTopColor: 'rgb(76,29,149)',
+								borderRadius: '50%',
+							}}
+						></div>
 					</Transition.Child>
 				</div>
 			</Dialog>
