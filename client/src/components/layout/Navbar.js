@@ -9,7 +9,7 @@ function Navbar() {
 	return (
 		<>
 			{/* Logged out */}
-			{/* <nav className='bg-white h-14 shadow'>
+			<nav className='bg-white h-14 shadow'>
 				<div className='px-6 items-center flex h-14'>
 					<div className='flex-grow'>
 						<Link to='/'>
@@ -27,10 +27,10 @@ function Navbar() {
 						sign up
 					</Link>
 				</div>
-			</nav> */}
+			</nav>
 
 			{/* Logged in */}
-			<nav className='bg-white h-14 shadow'>
+			{/* <nav className='bg-white h-14 shadow'>
 				<div className='px-6 items-center flex h-14'>
 					<div className='flex-grow'>
 						<Link to='/'>
@@ -51,7 +51,7 @@ function Navbar() {
 						sign out
 					</Link>
 				</div>
-			</nav>
+			</nav> */}
 		</>
 	);
 }

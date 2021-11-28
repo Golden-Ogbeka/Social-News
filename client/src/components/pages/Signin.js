@@ -2,22 +2,66 @@ import React from 'react';
 import BannerImage from '../../assets/banner.jpeg';
 import { UserIcon } from '@heroicons/react/outline';
 import axios from 'axios';
+import { API_URL } from '../../app.json';
+import AppContext from '../utils/AppContext';
 
 function Signin() {
+	const { contextVariables, setContextVariables } =
+		React.useContext(AppContext);
+	const [inputValues, setInputValues] = React.useState({
+		email: '',
+		password: '',
+	});
 	const signinUser = async (e) => {
 		e.preventDefault();
-		try {
-			// const response = await axios.post(
-			// 	`https://api.kexzegroup.com/api/v1/vendor/signUp`,
-			// 	{
-			// 		email: 'abfatahi96@gmail.com',
-			// 		password: 'Examplepassword123!',
-			// 	}
-			// );
-			// console.log(response);
-		} catch (error) {
-			console.log(error.response.data);
+		if (inputValues.email === '' || inputValues.password === '') {
+			return setContextVariables({
+				...contextVariables,
+				feedback: {
+					...contextVariables.feedback,
+					open: true,
+					type: 'error',
+					message: 'Incomplete fields',
+				},
+			});
 		}
+		try {
+			const response = await axios.post(`${API_URL}/user/login`, {
+				email: inputValues.email,
+				password: inputValues.password,
+			});
+			if (response.data.status === 'success') {
+				console.log(response.data);
+				setContextVariables({
+					...contextVariables,
+					feedback: {
+						...contextVariables.feedback,
+						open: true,
+						type: 'success',
+						message: response.data.message,
+					},
+				});
+			}
+		} catch (error) {
+			setContextVariables({
+				...contextVariables,
+				feedback: {
+					...contextVariables.feedback,
+					open: true,
+					type: 'error',
+					message: error.response?.data
+						? error.response.data.message
+						: 'Request unsuccessful',
+				},
+			});
+		}
+	};
+
+	const handleInput = (e) => {
+		return setInputValues({
+			...inputValues,
+			[e.target.name]: e.target.value,
+		});
 	};
 	return (
 		<div className='bg-white static flex justify-center min-h-screen min-w-screen'>
@@ -57,12 +101,18 @@ function Signin() {
 						className='w-full h-10 border-purple-100 border-solid border-b-2 mb-2 outline-none bg-transparent focus:border-purple-300'
 						placeholder='Email'
 						type='email'
+						name='email'
+						value={inputValues.email}
+						onChange={(e) => handleInput(e)}
 					/>
 					{/* <br /> */}
 					<input
 						className='w-full h-10 border-purple-100 border-solid border-b-2  outline-none mb-10 bg-transparent focus:border-purple-300'
 						placeholder='Password'
 						type='password'
+						name='password'
+						value={inputValues.password}
+						onChange={(e) => handleInput(e)}
 					/>
 					<button
 						onClick={(e) => signinUser(e)}

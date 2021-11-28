@@ -1,8 +1,74 @@
 import React from 'react';
 import BannerImage from '../../assets/banner.jpeg';
 import { UserIcon } from '@heroicons/react/outline';
+import axios from 'axios';
+import { API_URL } from '../../app.json';
+import AppContext from '../utils/AppContext';
 
 function Signup() {
+	const { contextVariables, setContextVariables } =
+		React.useContext(AppContext);
+	const [inputValues, setInputValues] = React.useState({
+		name: '',
+		email: '',
+		password: '',
+	});
+	const signupUser = async (e) => {
+		e.preventDefault();
+		if (
+			inputValues.name === '' ||
+			inputValues.email === '' ||
+			inputValues.password === ''
+		) {
+			return setContextVariables({
+				...contextVariables,
+				feedback: {
+					...contextVariables.feedback,
+					open: true,
+					type: 'error',
+					message: 'Incomplete fields',
+				},
+			});
+		}
+		try {
+			const response = await axios.post(`${API_URL}/user/register`, {
+				name: inputValues.name,
+				email: inputValues.email,
+				password: inputValues.password,
+			});
+			if (response.data.status === 'success') {
+				console.log(response.data);
+				setContextVariables({
+					...contextVariables,
+					feedback: {
+						...contextVariables.feedback,
+						open: true,
+						type: 'success',
+						message: response.data.message,
+					},
+				});
+			}
+		} catch (error) {
+			setContextVariables({
+				...contextVariables,
+				feedback: {
+					...contextVariables.feedback,
+					open: true,
+					type: 'error',
+					message: error.response?.data
+						? error.response.data.message
+						: 'Request unsuccessful',
+				},
+			});
+		}
+	};
+
+	const handleInput = (e) => {
+		return setInputValues({
+			...inputValues,
+			[e.target.name]: e.target.value,
+		});
+	};
 	return (
 		<div className='bg-white static flex justify-center min-h-screen min-w-screen'>
 			<img
@@ -39,16 +105,33 @@ function Signup() {
 				<form className='flex-col flex items-center w-full pl-5 pr-5 md:pl-20 md:pr-20'>
 					<input
 						className='w-full h-10 border-purple-100 border-solid border-b-2 mb-2 outline-none bg-transparent focus:border-purple-300'
+						placeholder='Full name'
+						type='text'
+						name='name'
+						value={inputValues.name}
+						onChange={(e) => handleInput(e)}
+					/>
+					<input
+						className='w-full h-10 border-purple-100 border-solid border-b-2 mb-2 outline-none bg-transparent focus:border-purple-300'
 						placeholder='Email'
 						type='email'
+						name='email'
+						value={inputValues.email}
+						onChange={(e) => handleInput(e)}
 					/>
 					{/* <br /> */}
 					<input
 						className='w-full h-10 border-purple-100 border-solid border-b-2 outline-none mb-10 bg-transparent focus:border-purple-300'
 						placeholder='Password'
 						type='password'
+						name='password'
+						value={inputValues.password}
+						onChange={(e) => handleInput(e)}
 					/>
-					<button className='w-32 bg-purple-900 pt-4 pb-4 rounded text-white text-sm mb-10 font-semibold'>
+					<button
+						className='w-32 bg-purple-900 pt-4 pb-4 rounded text-white text-sm mb-10 font-semibold'
+						onClick={(e) => signupUser(e)}
+					>
 						SIGN UP
 					</button>
 				</form>
