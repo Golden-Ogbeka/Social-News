@@ -26,6 +26,7 @@ function App() {
 			open: false,
 			timeout: 3000,
 		},
+		loggedIn: false,
 	});
 
 	const hideFeedback = () => {

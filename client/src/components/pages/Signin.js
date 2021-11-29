@@ -2,7 +2,7 @@ import React from 'react';
 import BannerImage from '../../assets/banner.jpeg';
 import { UserIcon } from '@heroicons/react/outline';
 import axios from 'axios';
-import { API_URL } from '../../app.json';
+import { API_URL, SESSION_NAME } from '../../app.json';
 import AppContext from '../utils/AppContext';
 
 function Signin() {
@@ -31,7 +31,6 @@ function Signin() {
 				password: inputValues.password,
 			});
 			if (response.data.status === 'success') {
-				console.log(response.data);
 				setContextVariables({
 					...contextVariables,
 					feedback: {
@@ -40,7 +39,10 @@ function Signin() {
 						type: 'success',
 						message: response.data.message,
 					},
+					loggedIn: true,
 				});
+				// set local storage
+				localStorage.setItem(SESSION_NAME, JSON.stringify(response.data.User));
 			}
 		} catch (error) {
 			setContextVariables({
