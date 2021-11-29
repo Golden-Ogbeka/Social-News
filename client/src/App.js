@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import NewsStand from './components/pages/NewsStand';
 import Profile from './components/pages/Profile';
@@ -15,8 +15,10 @@ import {
 } from '@heroicons/react/outline';
 import FloatingAccessButton from './components/layout/FloatingAccessButton';
 import PageNotFound from './components/pages/PageNotFound';
+import { SESSION_NAME } from './app.json';
 
 function App() {
+	const history = useHistory();
 	const [contextVariables, setContextVariables] = React.useState({
 		signOutModalState: false,
 		loadingIndicatorState: false,
@@ -49,12 +51,17 @@ function App() {
 			...contextVariables,
 			loadingIndicatorState: true,
 		});
+
+		// Remove localstorage
+		localStorage.removeItem(SESSION_NAME);
+
 		// Signout function here
 		setContextVariables((oldState) => {
 			return {
 				...oldState,
 				signOutModalState: false,
 				loadingIndicatorState: false,
+				loggedIn: false,
 				feedback: {
 					...oldState.feedback,
 					open: true,
@@ -65,6 +72,7 @@ function App() {
 		});
 
 		hideFeedback();
+		history.push('/signin');
 	};
 	return (
 		<AppContext.Provider

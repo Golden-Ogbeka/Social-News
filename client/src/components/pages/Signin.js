@@ -4,6 +4,7 @@ import { UserIcon } from '@heroicons/react/outline';
 import axios from 'axios';
 import { API_URL, SESSION_NAME } from '../../app.json';
 import AppContext from '../utils/AppContext';
+import { useHistory } from 'react-router-dom';
 
 function Signin() {
 	const { contextVariables, setContextVariables } =
@@ -12,6 +13,8 @@ function Signin() {
 		email: '',
 		password: '',
 	});
+
+	const history = useHistory();
 	const signinUser = async (e) => {
 		e.preventDefault();
 		if (inputValues.email === '' || inputValues.password === '') {
@@ -43,6 +46,7 @@ function Signin() {
 				});
 				// set local storage
 				localStorage.setItem(SESSION_NAME, JSON.stringify(response.data.User));
+				history.push('/newsStand');
 			}
 		} catch (error) {
 			setContextVariables({
