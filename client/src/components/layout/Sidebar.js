@@ -14,10 +14,9 @@ import { Link, NavLink } from 'react-router-dom';
 import AppContext from '../utils/AppContext';
 
 function Sidebar() {
-	const { contextVariables, setContextVariables } =
-		React.useContext(AppContext);
+	const { contextVariables, setContextVariables } = React.useContext(AppContext);
 	return (
-		<nav className='w-1/6 bg-white h-full fixed  shadow-inner hidden md:block'>
+		<nav className='w-[15%] bg-white h-full fixed mt-14 shadow-inner hidden lg:block'>
 			<NavLink
 				exact
 				to='/newsStand'

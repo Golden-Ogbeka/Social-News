@@ -1,11 +1,12 @@
 import React from 'react';
-import Sidebar from '../layout/Sidebar';
+import AppLayout from '../layout/AppLayout';
+import NewsPost from '../common/NewsPost';
 
 function NewsStand() {
 	return (
-		<>
-			<Sidebar />
-		</>
+		<AppLayout>
+			<NewsPost />
+		</AppLayout>
 	);
 }
 

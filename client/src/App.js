@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
-import Navbar from './components/layout/Navbar';
 import NewsStand from './components/pages/NewsStand';
 import Profile from './components/pages/Profile';
 import Signin from './components/pages/Signin';
@@ -75,11 +74,7 @@ function App() {
 		history.push('/signin');
 	};
 	return (
-		<AppContext.Provider
-			value={{ contextVariables, setContextVariables, hideFeedback }}
-		>
-			<Navbar />
-
+		<AppContext.Provider value={{ contextVariables, setContextVariables, hideFeedback }}>
 			{/* Components */}
 			<SignOutModal
 				contextVariables={contextVariables}
@@ -109,11 +104,7 @@ function App() {
 	);
 }
 
-const SignOutModal = ({
-	contextVariables,
-	setContextVariables,
-	signOutUser,
-}) => {
+const SignOutModal = ({ contextVariables, setContextVariables, signOutUser }) => {
 	return (
 		<Transition.Root show={contextVariables.signOutModalState}>
 			<Dialog
@@ -151,22 +142,14 @@ const SignOutModal = ({
 							<div className='bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4'>
 								<div className='sm:flex sm:items-start'>
 									<div className='mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-purple-100 sm:mx-0 sm:h-10 sm:w-10'>
-										<LogoutIcon
-											className='h-6 w-6 text-purple-900'
-											aria-hidden='true'
-										/>
+										<LogoutIcon className='h-6 w-6 text-purple-900' aria-hidden='true' />
 									</div>
 									<div className='mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left'>
-										<Dialog.Title
-											as='h3'
-											className='text-lg leading-6 font-medium text-gray-900'
-										>
+										<Dialog.Title as='h3' className='text-lg leading-6 font-medium text-gray-900'>
 											Sign out?
 										</Dialog.Title>
 										<div className='mt-2'>
-											<p className='text-md text-gray-500'>
-												Are you sure you want to sign out?
-											</p>
+											<p className='text-md text-gray-500'>Are you sure you want to sign out?</p>
 										</div>
 									</div>
 								</div>
@@ -239,26 +222,17 @@ const Feedback = ({ contextVariables, setContextVariables }) => {
 								<div className='sm:flex sm:items-start'>
 									{contextVariables.feedback.type === 'success' && (
 										<div className='mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10'>
-											<CheckCircleIcon
-												className='h-6 w-6 text-green-700'
-												aria-hidden='true'
-											/>
+											<CheckCircleIcon className='h-6 w-6 text-green-700' aria-hidden='true' />
 										</div>
 									)}
 									{contextVariables.feedback.type === 'info' && (
 										<div className='mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10'>
-											<InformationCircleIcon
-												className='h-6 w-6 text-blue-700'
-												aria-hidden='true'
-											/>
+											<InformationCircleIcon className='h-6 w-6 text-blue-700' aria-hidden='true' />
 										</div>
 									)}
 									{contextVariables.feedback.type === 'error' && (
 										<div className='mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10'>
-											<ExclamationCircleIcon
-												className='h-6 w-6 text-red-700'
-												aria-hidden='true'
-											/>
+											<ExclamationCircleIcon className='h-6 w-6 text-red-700' aria-hidden='true' />
 										</div>
 									)}
 									<div className='mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left'>
@@ -269,9 +243,7 @@ const Feedback = ({ contextVariables, setContextVariables }) => {
 											{contextVariables.feedback.type}
 										</Dialog.Title>
 										<div className='mt-2'>
-											<p className='text-md text-gray-500'>
-												{contextVariables.feedback.message}
-											</p>
+											<p className='text-md text-gray-500'>{contextVariables.feedback.message}</p>
 										</div>
 									</div>
 								</div>

@@ -5,11 +5,10 @@ import { Link } from 'react-router-dom';
 import AppContext from '../utils/AppContext';
 
 function FloatingAccessButton() {
-	const { contextVariables, setContextVariables } =
-		React.useContext(AppContext);
+	const { contextVariables, setContextVariables } = React.useContext(AppContext);
 	return (
 		<>
-			<Popover className=' bottom-5 right-5 md:hidden z-10 fixed'>
+			<Popover className=' bottom-5 right-5 lg:hidden z-10 fixed'>
 				<Popover.Button>
 					<button className='w-16 h-16 bg-purple-900  rounded-full text-white justify-center flex items-center focus:bg-purple-500 '>
 						<MenuIcon className='w-8 h-8' />

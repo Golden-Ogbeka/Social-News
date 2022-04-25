@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 import AppContext from '../utils/AppContext';
 
 function Navbar() {
-	const { contextVariables, setContextVariables } =
-		React.useContext(AppContext);
+	const { contextVariables, setContextVariables } = React.useContext(AppContext);
 	return (
 		<>
 			{contextVariables.loggedIn ? (
 				// Logged in
-				<nav className='bg-white h-14 shadow'>
+				<nav className='bg-white h-14 shadow fixed w-full z-10'>
 					<div className='px-6 items-center flex h-14'>
 						<div className='flex-grow'>
 							<Link to='/'>
@@ -34,7 +33,7 @@ function Navbar() {
 				</nav>
 			) : (
 				// Logged out
-				<nav className='bg-white h-14 shadow'>
+				<nav className='bg-white h-14 shadow fixed w-full z-10'>
 					<div className='px-6 items-center flex h-14'>
 						<div className='flex-grow'>
 							<Link to='/'>
@@ -42,10 +41,7 @@ function Navbar() {
 							</Link>
 						</div>
 
-						<Link
-							to='/signin'
-							className='text-purple-900 font-bold text-sm pr-10'
-						>
+						<Link to='/signin' className='text-purple-900 font-bold text-sm pr-10'>
 							sign in
 						</Link>
 						<Link to='/signup' className='text-purple-900 font-bold text-sm'>
