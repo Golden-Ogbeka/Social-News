@@ -5,7 +5,7 @@ import CommentBlock from '../CommentBlock/CommentBlock';
 
 function NewsPost() {
 	return (
-		<div className="w-full shadow-md rounded-[10px] p-5">
+		<article className="w-full shadow-md rounded-[10px] p-5">
 			<div className="flex justify-between align-middle mb-10">
 				<div className="flex flex-col gap-[10px]">
 					<Text
@@ -37,7 +37,7 @@ function NewsPost() {
 				</Text>
 			</div>
 			<CommentBlock />
-		</div>
+		</article>
 	);
 }
 

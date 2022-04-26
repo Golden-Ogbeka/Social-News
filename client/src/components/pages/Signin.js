@@ -6,6 +6,7 @@ import { API_URL, SESSION_NAME } from '../../app.json';
 import AppContext from '../utils/AppContext';
 import { useHistory } from 'react-router-dom';
 import TextInput from '../common/TextInput/TextInput';
+import Button from '../common/Button/Button';
 
 function Signin() {
 	const { contextVariables, setContextVariables } =
@@ -121,13 +122,14 @@ function Signin() {
 						value={inputValues.password}
 						onChange={e => handleInput(e)}
 					/>
-
-					<button
+					<Button
 						onClick={e => signinUser(e)}
-						className="w-32 bg-purple-900 pt-4 pb-4 rounded text-white text-sm mb-10 font-semibold"
+						style={{
+							marginBottom: 40,
+						}}
 					>
 						SIGN IN
-					</button>
+					</Button>
 				</form>
 			</div>
 		</div>

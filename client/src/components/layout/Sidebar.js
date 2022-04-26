@@ -14,97 +14,102 @@ import { Link, NavLink } from 'react-router-dom';
 import AppContext from '../utils/AppContext';
 
 function Sidebar() {
-	const { contextVariables, setContextVariables } = React.useContext(AppContext);
+	const { contextVariables, setContextVariables } =
+		React.useContext(AppContext);
 	return (
-		<nav className='w-[15%] bg-white h-full fixed mt-14 shadow-inner hidden lg:block'>
+		<nav className="w-[15%] bg-white h-full fixed mt-14 shadow-inner hidden lg:block">
 			<NavLink
 				exact
-				to='/newsStand'
-				className='flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900'
+				to="/newsStand"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
 				}}
 			>
-				<HomeIcon width={24} height={24} className='mr-5' />
+				<HomeIcon width={24} height={24} className="mr-5" />
 				<span>News Stand</span>
 			</NavLink>
 			<NavLink
 				exact
-				to='/profile'
-				className='flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900'
+				to="/profile"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
 				}}
 			>
-				<UserIcon width={24} height={24} className='mr-5' />
+				<UserIcon width={24} height={24} className="mr-5" />
 				<span>Profile</span>
 			</NavLink>
 			<NavLink
 				exact
-				to='/profile'
-				className='flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900'
+				to="/posts"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
 				}}
 			>
-				<DocumentDuplicateIcon width={24} height={24} className='mr-5' />
+				<DocumentDuplicateIcon
+					width={24}
+					height={24}
+					className="mr-5"
+				/>
 				<span>Posts</span>
 			</NavLink>
 			<NavLink
 				exact
-				to='/profile'
-				className='flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900'
+				to="/followers"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
 				}}
 			>
-				<UserGroupIcon width={24} height={24} className='mr-5' />
+				<UserGroupIcon width={24} height={24} className="mr-5" />
 				<span>Followers</span>
 			</NavLink>
 			<NavLink
 				exact
-				to='/profile'
-				className='flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900'
+				to="/mentors"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
 				}}
 			>
-				<SparklesIcon width={24} height={24} className='mr-5' />
+				<SparklesIcon width={24} height={24} className="mr-5" />
 				<span>Mentors</span>
 			</NavLink>
 			<NavLink
 				exact
-				to='/profile'
-				className='flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900'
+				to="/search"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
 				}}
 			>
-				<SearchIcon width={24} height={24} className='mr-5' />
+				<SearchIcon width={24} height={24} className="mr-5" />
 				<span>Search</span>
 			</NavLink>
 			<NavLink
 				exact
-				to='/profile'
-				className='flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900'
+				to="/settings"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
 				}}
 			>
-				<CogIcon width={24} height={24} className='mr-5' />
+				<CogIcon width={24} height={24} className="mr-5" />
 				<span>Settings</span>
 			</NavLink>
 			<Link
 				exact
-				to='#/'
-				className='flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900'
+				to="#/"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
@@ -116,7 +121,7 @@ function Sidebar() {
 					})
 				}
 			>
-				<LogoutIcon width={24} height={24} className='mr-5' />
+				<LogoutIcon width={24} height={24} className="mr-5" />
 				<span>Sign out</span>
 			</Link>
 		</nav>
