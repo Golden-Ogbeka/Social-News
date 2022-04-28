@@ -4,13 +4,13 @@ function Text({
 	text = '',
 	size = 18,
 	weight = '400',
-	lineHeight = '18px',
+	lineHeight = '20px',
 	color = '#000000',
 	children,
 }) {
 	return (
 		<span
-			className=''
+			className=""
 			style={{
 				fontSize: size,
 				fontWeight: weight,

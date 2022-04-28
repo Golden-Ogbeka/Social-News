@@ -17,7 +17,7 @@ function Profile() {
 					</div>
 					<Button>Follow</Button>
 				</div>
-				<div className="mt-5 flex flex-row align-middle w-full max-w-[500px] flex-wrap justify-between">
+				<div className="mt-5 flex flex-row items-center w-full max-w-[500px] flex-wrap justify-between">
 					<Text weight="600">23 posts</Text>
 					<Text weight="600">15M followers</Text>
 					<Text weight="600">1,300 mentors</Text>

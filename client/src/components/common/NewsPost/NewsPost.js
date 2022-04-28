@@ -2,11 +2,12 @@ import React from 'react';
 import Avatar from '../Avatar/Avatar';
 import Text from '../Text/Text';
 import CommentBlock from '../CommentBlock/CommentBlock';
+import PostMenu from '../PostMenu/PostMenu';
 
-function NewsPost() {
+function NewsPost({ isOwner = false }) {
 	return (
 		<article className="w-full shadow-md rounded-[10px] p-5">
-			<div className="flex justify-between align-middle mb-10">
+			<div className="flex justify-between items-center mb-10">
 				<div className="flex flex-col gap-[10px]">
 					<Text
 						text="The danger of criminals"
@@ -23,7 +24,15 @@ function NewsPost() {
 						<Text text="10M comments" size={10} weight="300" />
 					</div>
 				</div>
-				<Avatar />
+				{!isOwner ? (
+					<image>
+						<Avatar />
+					</image>
+				) : (
+					<div className="relative">
+						<PostMenu />
+					</div>
+				)}
 			</div>
 			<div className="mb-[30px]">
 				<Text lineHeight="22.5px">

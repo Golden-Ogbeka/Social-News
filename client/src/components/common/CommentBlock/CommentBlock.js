@@ -6,14 +6,14 @@ import Comment from './Comment/Comment';
 function CommentBlock() {
 	return (
 		<div className="flex flex-col gap-5">
-			<div className="flex flex-row justify-between align-middle flex-wrap gap-3">
+			<div className="flex flex-row justify-between items-center flex-wrap gap-3">
 				<Text text="Comments" weight="600" lineHeight={'22.5px'} />
 				<TextInput
 					placeholder="Type your comment"
 					style={{
 						maxWidth: '550px',
 					}}
-					mode="outline"
+					variant="outline"
 				/>
 			</div>
 			<div className="flex flex-col gap-5 w-full rounded-[10px] shadow-md p-5 max-h-[290px] overflow-auto scrollbar">

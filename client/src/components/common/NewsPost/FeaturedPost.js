@@ -12,7 +12,7 @@ function FeaturedPost() {
 					Why crimes shouldn’t be allowed
 				</Text>
 			</h5>
-			<div className="flex flex-row align-middle justify-between flex-wrap gap-2">
+			<div className="flex flex-row items-center justify-between flex-wrap gap-2">
 				<Text weight="300" size={10}>
 					10.2M views
 				</Text>
