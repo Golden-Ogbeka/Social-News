@@ -1,6 +1,5 @@
 import React from 'react';
 import Avatar from '../Avatar/Avatar';
-import MoreIcon from '../Icons/MoreIcon';
 import Text from '../Text/Text';
 import FollowerMenu from './FollowerMenu';
 

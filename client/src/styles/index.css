@@ -29,4 +29,11 @@ body {
 	.scrollbar::-webkit-scrollbar-thumb:hover {
 		background: #666666;
 	}
+
+	.tab {
+		transition: all 0.5s;
+	}
+	.tab:hover {
+		background-color: red !important;
+	}
 }

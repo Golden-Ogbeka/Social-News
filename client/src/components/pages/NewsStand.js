@@ -5,7 +5,9 @@ import NewsPost from '../common/NewsPost/NewsPost';
 function NewsStand() {
 	return (
 		<AppLayout>
-			<NewsPost />
+			<div className="flex flex-col gap-5">
+				<NewsPost />
+			</div>
 		</AppLayout>
 	);
 }
