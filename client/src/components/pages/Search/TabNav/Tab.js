@@ -4,7 +4,7 @@ import theme from '../../../theme/theme';
 function Tab({ currentTab, changeTab, tab }) {
 	return (
 		<button
-			className="w-full h-[58px] flex flex-row items-center justify-center border-[1px]  border-purple-900 hover:!bg-purple-700 transition duration-500 hover:!text-white"
+			className="w-full h-[58px] flex flex-row items-center justify-center border-[1px]  border-[#251A6A] hover:!bg-purple-700 transition duration-500 hover:!text-white"
 			style={{
 				color:
 					currentTab === tab

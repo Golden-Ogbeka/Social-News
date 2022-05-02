@@ -11,7 +11,7 @@ function FloatingAccessButton() {
 		<>
 			<Popover className=" bottom-5 right-5 lg:hidden z-10 fixed">
 				<Popover.Button>
-					<button className="w-16 h-16 bg-purple-900  rounded-full text-white justify-center flex items-center focus:bg-purple-500 ">
+					<button className="w-16 h-16 bg-[#251A6A]  rounded-full text-white justify-center flex items-center focus:bg-purple-500 ">
 						<MenuIcon className="w-8 h-8" />
 					</button>
 				</Popover.Button>
@@ -21,7 +21,7 @@ function FloatingAccessButton() {
 						<Popover.Button className="mb-2  text-right">
 							<Link
 								to="/newsStand"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
 							>
 								News Stand
 							</Link>
@@ -29,7 +29,7 @@ function FloatingAccessButton() {
 						<Popover.Button className="mb-2 text-right">
 							<Link
 								to="/profile"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
 							>
 								Profile
 							</Link>
@@ -37,7 +37,7 @@ function FloatingAccessButton() {
 						<Popover.Button className="mb-2 text-right">
 							<Link
 								to="/posts"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
 							>
 								Posts
 							</Link>
@@ -45,7 +45,7 @@ function FloatingAccessButton() {
 						<Popover.Button className="mb-2 text-right">
 							<Link
 								to="/followers"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
 							>
 								Followers
 							</Link>
@@ -53,7 +53,7 @@ function FloatingAccessButton() {
 						<Popover.Button className="mb-2 text-right">
 							<Link
 								to="/mentors"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
 							>
 								Mentors
 							</Link>
@@ -61,7 +61,7 @@ function FloatingAccessButton() {
 						<Popover.Button className="mb-2 text-right">
 							<Link
 								to="/search"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
 							>
 								Search
 							</Link>
@@ -69,7 +69,7 @@ function FloatingAccessButton() {
 						<Popover.Button className="mb-2 text-right">
 							<Link
 								to="/settings"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
 							>
 								Settings
 							</Link>
@@ -77,7 +77,7 @@ function FloatingAccessButton() {
 						<Popover.Button className="text-right">
 							<Link
 								to="#/"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
 								onClick={() =>
 									setContextVariables({
 										...contextVariables,

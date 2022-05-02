@@ -21,7 +21,7 @@ function Sidebar() {
 			<NavLink
 				exact
 				to="/newsStand"
-				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
@@ -33,7 +33,7 @@ function Sidebar() {
 			<NavLink
 				exact
 				to="/profile"
-				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
@@ -45,7 +45,7 @@ function Sidebar() {
 			<NavLink
 				exact
 				to="/posts"
-				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
@@ -61,7 +61,7 @@ function Sidebar() {
 			<NavLink
 				exact
 				to="/followers"
-				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
@@ -73,7 +73,7 @@ function Sidebar() {
 			<NavLink
 				exact
 				to="/mentors"
-				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
@@ -85,7 +85,7 @@ function Sidebar() {
 			<NavLink
 				exact
 				to="/search"
-				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
@@ -97,7 +97,7 @@ function Sidebar() {
 			<NavLink
 				exact
 				to="/settings"
-				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',
@@ -109,7 +109,7 @@ function Sidebar() {
 			<Link
 				exact
 				to="#/"
-				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900"
+				className="flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]"
 				activeStyle={{
 					backgroundColor: '#251A6A',
 					color: 'white',

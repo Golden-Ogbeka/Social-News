@@ -7,9 +7,9 @@ function FollowerBlock({ type = 'follower' }) {
 	return (
 		<div className="p-5 shadow-md w-full md:max-w-[48%] lg:max-w-[49%] rounded-[10px]">
 			<div className="flex flex-row align-top gap-[10px]">
-				<image>
+				<div>
 					<Avatar size={54} />
-				</image>
+				</div>
 				<div className="flex flex-col gap-5 w-full">
 					<div className="flex flex-row align-top mb-[14px] justify-between">
 						<div className="flex flex-col gap-[5px]">

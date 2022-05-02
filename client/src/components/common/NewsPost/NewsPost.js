@@ -25,9 +25,9 @@ function NewsPost({ isOwner = false }) {
 					</div>
 				</div>
 				{!isOwner ? (
-					<image>
+					<div>
 						<Avatar />
-					</image>
+					</div>
 				) : (
 					<div className="relative">
 						<PostMenu />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import { Switch, Route, useHistory, Redirect } from 'react-router-dom';
 import NewsStand from './components/pages/NewsStand';
 import Profile from './components/pages/Profile';
 import Signin from './components/pages/Signin';
@@ -7,7 +7,6 @@ import Signup from './components/pages/Signup';
 import AppContext from './components/utils/AppContext';
 import FloatingAccessButton from './components/layout/FloatingAccessButton';
 import PageNotFound from './components/pages/PageNotFound';
-import { SESSION_NAME } from './app.json';
 import Followers from './components/pages/Followers';
 import Mentors from './components/pages/Mentors';
 import Posts from './components/pages/Posts/Posts';
@@ -18,6 +17,9 @@ import LoadingIndicator from './components/common/LoadingIndicator/LoadingIndica
 import SignOutModal from './components/common/Modals/Signout/SignOutModal';
 import Feedback from './components/common/Feedback/Feedback';
 import Search from './components/pages/Search/Search';
+import { removeSessionDetails } from './functions/userSession';
+import RestrictedRoute from './components/utils/Routes/RestrictedRoute';
+import PrivateRoute from './components/utils/Routes/PrivateRoute';
 
 function App() {
 	const history = useHistory();
@@ -55,7 +57,7 @@ function App() {
 		});
 
 		// Remove localstorage
-		localStorage.removeItem(SESSION_NAME);
+		removeSessionDetails();
 
 		// Signout function here
 		setContextVariables(oldState => {
@@ -98,18 +100,50 @@ function App() {
 
 			{/* Routes */}
 			<Switch>
-				<Route path="/" exact component={Signin} />
-				<Route path="/signin" component={Signin} exact />
-				<Route path="/signup" component={Signup} exact />
-				<Route path="/newsStand" component={NewsStand} />
-				<Route path="/profile" component={Profile} exact />
-				<Route path="/posts" component={Posts} exact />
-				<Route path="/posts/new" component={NewPost} exact />
-				<Route path="/posts/edit" component={EditPost} exact />
-				<Route path="/followers" component={Followers} exact />
-				<Route path="/mentors" component={Mentors} exact />
-				<Route path="/search" component={Search} exact />
-				<Route path="/settings" component={Settings} exact />
+				{contextVariables.loggedIn ? (
+					// If logged in, send to news stand page
+					<PrivateRoute path="/" exact>
+						<Redirect to="/newsStand" />
+					</PrivateRoute>
+				) : (
+					<RestrictedRoute path={'/'} exact>
+						<Signin />
+					</RestrictedRoute>
+				)}
+
+				<RestrictedRoute path="/signin" exact>
+					<Signin />
+				</RestrictedRoute>
+				<RestrictedRoute path="/signup" exact>
+					<Signup />
+				</RestrictedRoute>
+				<PrivateRoute path="/newsStand" exact>
+					<NewsStand />
+				</PrivateRoute>
+				<PrivateRoute path="/profile" exact>
+					<Profile />
+				</PrivateRoute>
+				<PrivateRoute path="/posts" exact>
+					<Posts />
+				</PrivateRoute>
+				<PrivateRoute path="/posts/new" exact>
+					<NewPost />
+				</PrivateRoute>
+				<PrivateRoute path="/posts/edit" exact>
+					<EditPost />
+				</PrivateRoute>
+				<PrivateRoute path="/followers" exact>
+					<Followers />
+				</PrivateRoute>
+				<PrivateRoute path="/mentors" exact>
+					<Mentors />
+				</PrivateRoute>
+				<PrivateRoute path="/search" exact>
+					<Search />
+				</PrivateRoute>
+				<PrivateRoute path="/settings" exact>
+					<Settings />
+				</PrivateRoute>
 				<Route path="*" component={PageNotFound} exact />
 			</Switch>
 		</AppContext.Provider>

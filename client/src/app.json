@@ -1,5 +1,0 @@
-{
-	"API_URL": "https://social-news-by-golden-ogbeka.herokuapp.com/api",
-	"SESSION_NAME": "SOCIAL_SHARE_SESSION",
-	"SESSION_ENCRYPT_KEY": "SOcialSHare"
-}

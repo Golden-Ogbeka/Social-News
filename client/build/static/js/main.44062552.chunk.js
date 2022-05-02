@@ -53,7 +53,7 @@
 											Object(p.jsx)(j.b, {
 												to: '#/',
 												className:
-													'text-purple-900 font-bold text-sm',
+													'text-[#251A6A] font-bold text-sm',
 												onClick: function () {
 													return s(
 														Object(b.a)(
@@ -94,13 +94,13 @@
 											Object(p.jsx)(j.b, {
 												to: '/signin',
 												className:
-													'text-purple-900 font-bold text-sm pr-10',
+													'text-[#251A6A] font-bold text-sm pr-10',
 												children: 'sign in',
 											}),
 											Object(p.jsx)(j.b, {
 												to: '/signup',
 												className:
-													'text-purple-900 font-bold text-sm',
+													'text-[#251A6A] font-bold text-sm',
 												children: 'sign up',
 											}),
 										],
@@ -121,7 +121,7 @@
 							exact: !0,
 							to: '/newsStand',
 							className:
-								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900',
+								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]',
 							activeStyle: {
 								backgroundColor: '#251A6A',
 								color: 'white',
@@ -141,7 +141,7 @@
 							exact: !0,
 							to: '/profile',
 							className:
-								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900',
+								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]',
 							activeStyle: {
 								backgroundColor: '#251A6A',
 								color: 'white',
@@ -159,7 +159,7 @@
 							exact: !0,
 							to: '/profile',
 							className:
-								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900',
+								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]',
 							activeStyle: {
 								backgroundColor: '#251A6A',
 								color: 'white',
@@ -177,7 +177,7 @@
 							exact: !0,
 							to: '/profile',
 							className:
-								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900',
+								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]',
 							activeStyle: {
 								backgroundColor: '#251A6A',
 								color: 'white',
@@ -197,7 +197,7 @@
 							exact: !0,
 							to: '/profile',
 							className:
-								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900',
+								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]',
 							activeStyle: {
 								backgroundColor: '#251A6A',
 								color: 'white',
@@ -215,7 +215,7 @@
 							exact: !0,
 							to: '/profile',
 							className:
-								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900',
+								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]',
 							activeStyle: {
 								backgroundColor: '#251A6A',
 								color: 'white',
@@ -233,7 +233,7 @@
 							exact: !0,
 							to: '/profile',
 							className:
-								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900',
+								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]',
 							activeStyle: {
 								backgroundColor: '#251A6A',
 								color: 'white',
@@ -251,7 +251,7 @@
 							exact: !0,
 							to: '#/',
 							className:
-								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-purple-900',
+								'flex p-5 font-sans items-center text-lg text-gray-500 hover:bg-purple-50 hover:text-[#251A6A]',
 							activeStyle: {
 								backgroundColor: '#251A6A',
 								color: 'white',
@@ -508,12 +508,12 @@
 											style: { borderRadius: '50%' },
 											children: Object(p.jsx)(f.m, {
 												className:
-													'text-purple-900 h-5 w-5 ',
+													'text-[#251A6A] h-5 w-5 ',
 											}),
 										}),
 										Object(p.jsx)('div', {
 											className:
-												'font-sans text-base font-semibold mt-5 text-purple-900',
+												'font-sans text-base font-semibold mt-5 text-[#251A6A]',
 											children: 'SIGN IN',
 										}),
 									],
@@ -549,7 +549,7 @@
 												return j(e);
 											},
 											className:
-												'w-32 bg-purple-900 pt-4 pb-4 rounded text-white text-sm mb-10 font-semibold',
+												'w-32 bg-[#251A6A] pt-4 pb-4 rounded text-white text-sm mb-10 font-semibold',
 											children: 'SIGN IN',
 										}),
 									],
@@ -776,12 +776,12 @@
 												style: { borderRadius: '50%' },
 												children: Object(p.jsx)(f.m, {
 													className:
-														'text-purple-900 h-5 w-5 ',
+														'text-[#251A6A] h-5 w-5 ',
 												}),
 											}),
 											Object(p.jsx)('div', {
 												className:
-													'font-sans text-base font-semibold mt-5 text-purple-900',
+													'font-sans text-base font-semibold mt-5 text-[#251A6A]',
 												children: 'SIGN UP',
 											}),
 										],
@@ -825,7 +825,7 @@
 											}),
 											Object(p.jsx)('button', {
 												className:
-													'w-32 bg-purple-900 pt-4 pb-4 rounded text-white text-sm mb-10 font-semibold',
+													'w-32 bg-[#251A6A] pt-4 pb-4 rounded text-white text-sm mb-10 font-semibold',
 												onClick: function (e) {
 													return m(e);
 												},
@@ -852,7 +852,7 @@
 							Object(p.jsx)(I.Popover.Button, {
 								children: Object(p.jsx)('button', {
 									className:
-										'w-16 h-16 bg-purple-900  rounded-full text-white justify-center flex items-center focus:bg-purple-500 ',
+										'w-16 h-16 bg-[#251A6A]  rounded-full text-white justify-center flex items-center focus:bg-purple-500 ',
 									children: Object(p.jsx)(f.i, {
 										className: 'w-8 h-8',
 									}),
@@ -871,7 +871,7 @@
 												children: Object(p.jsx)(j.b, {
 													to: '/newsStand',
 													className:
-														'text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2',
+														'text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2',
 													children: 'News Stand',
 												}),
 											}),
@@ -880,7 +880,7 @@
 												children: Object(p.jsx)(j.b, {
 													to: '/profile',
 													className:
-														'text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2',
+														'text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2',
 													children: 'Profile',
 												}),
 											}),
@@ -889,7 +889,7 @@
 												children: Object(p.jsx)(j.b, {
 													to: '/profile',
 													className:
-														'text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2',
+														'text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2',
 													children: 'Posts',
 												}),
 											}),
@@ -898,7 +898,7 @@
 												children: Object(p.jsx)(j.b, {
 													to: '/profile',
 													className:
-														'text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2',
+														'text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2',
 													children: 'Followers',
 												}),
 											}),
@@ -907,7 +907,7 @@
 												children: Object(p.jsx)(j.b, {
 													to: '/profile',
 													className:
-														'text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2',
+														'text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2',
 													children: 'Mentors',
 												}),
 											}),
@@ -916,7 +916,7 @@
 												children: Object(p.jsx)(j.b, {
 													to: '/profile',
 													className:
-														'text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2',
+														'text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2',
 													children: 'Search',
 												}),
 											}),
@@ -925,7 +925,7 @@
 												children: Object(p.jsx)(j.b, {
 													to: '/profile',
 													className:
-														'text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2',
+														'text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2',
 													children: 'Settings',
 												}),
 											}),
@@ -934,7 +934,7 @@
 												children: Object(p.jsx)(j.b, {
 													to: '#/',
 													className:
-														'text-lg text-gray-500 focus:bg-purple-50 focus:text-purple-900 mb-2',
+														'text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2',
 													onClick: function () {
 														return s(
 															Object(b.a)(
@@ -990,12 +990,12 @@
 											style: { borderRadius: '50%' },
 											children: Object(p.jsx)(f.e, {
 												className:
-													'text-purple-900 h-5 w-5 ',
+													'text-[#251A6A] h-5 w-5 ',
 											}),
 										}),
 										Object(p.jsx)('div', {
 											className:
-												'font-sans text-base font-semibold mt-5 text-purple-900',
+												'font-sans text-base font-semibold mt-5 text-[#251A6A]',
 											children: 'Page not found',
 										}),
 										Object(p.jsx)('p', {
@@ -1016,7 +1016,7 @@
 										to: '/',
 										children: Object(p.jsx)('button', {
 											className:
-												'w-32 bg-purple-900 pt-4 pb-4 rounded text-white text-sm mb-10 font-semibold',
+												'w-32 bg-[#251A6A] pt-4 pb-4 rounded text-white text-sm mb-10 font-semibold',
 											children: 'Homepage',
 										}),
 									}),
@@ -1104,7 +1104,7 @@
 																				f.h,
 																				{
 																					className:
-																						'h-6 w-6 text-purple-900',
+																						'h-6 w-6 text-[#251A6A]',
 																					'aria-hidden':
 																						'true',
 																				}
@@ -1168,7 +1168,7 @@
 																{
 																	type: 'button',
 																	className:
-																		'w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-purple-900 text-base font-medium text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:ml-3 sm:w-auto sm:text-sm',
+																		'w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#251A6A] text-base font-medium text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:ml-3 sm:w-auto sm:text-sm',
 																	onClick:
 																		function () {
 																			return a();

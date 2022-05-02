@@ -17,6 +17,7 @@ router.get('/api/users', async (req, res) => {
 });
 
 router.post('/api/user/login', async (req, res) => {
+	console.log('OK');
 	try {
 		if (!req.body.email || !req.body.password) {
 			return res.status(400).json({
@@ -34,7 +35,11 @@ router.post('/api/user/login', async (req, res) => {
 				message: 'Invalid email or password',
 			});
 		}
-		return res.json({ status: 'success', message: 'Sign in successful', User });
+		return res.json({
+			status: 'success',
+			message: 'Sign in successful',
+			User,
+		});
 	} catch (error) {
 		return res.status(500).json({
 			message: "Couldn't login",
@@ -58,7 +63,11 @@ router.post('/api/user/register', async (req, res) => {
 			password,
 		});
 
-		return res.json({ status: 'success', message: 'Sign up successful', User });
+		return res.json({
+			status: 'success',
+			message: 'Sign up successful',
+			User,
+		});
 	} catch (error) {
 		return res.status(500).json({
 			message: "Couldn't login",
