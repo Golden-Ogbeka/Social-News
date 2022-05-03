@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { LogoutIcon, TrashIcon } from '@heroicons/react/outline';
 import React from 'react';
-import theme from '../../theme/theme';
+import theme from '../../../theme/theme';
 import TextInput from '../TextInput/TextInput';
 
 function Modal({

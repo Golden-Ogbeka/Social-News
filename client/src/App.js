@@ -12,10 +12,10 @@ import NewPost from './components/pages/Posts/NewPost';
 import EditPost from './components/pages/Posts/EditPost';
 import Settings from './components/pages/Settings/Settings';
 import Search from './components/pages/Search/Search';
-import RestrictedRoute from './components/utils/Routes/RestrictedRoute';
-import PrivateRoute from './components/utils/Routes/PrivateRoute';
 import AppContextProvider from './contexts/AppContextProvider';
 import General from './components/layout/General';
+import RestrictedRoute from './routes/RestrictedRoute';
+import PrivateRoute from './routes/PrivateRoute';
 
 function App() {
 	return (

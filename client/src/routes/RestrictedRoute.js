@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { FeedbackContext } from '../../../contexts/FeedbackProvider';
-import { UserContext } from '../../../contexts/UserProvider';
+import { FeedbackContext } from '../contexts/FeedbackProvider';
+import { UserContext } from '../contexts/UserProvider';
 import {
 	getSessionDetails,
 	removeSessionDetails,
-} from '../../../functions/userSession';
+} from '../functions/userSession';
 
-function PrivateRoute({ children, ...rest }) {
-	const [loggedInState, setLoggedInState] = React.useState(true);
+function RestrictedRoute({ children, ...rest }) {
+	// To prevent admin from going back to login pages
 
+	const [loggedInState, setLoggedInState] = React.useState(false);
 	const { openFeedback } = useContext(FeedbackContext);
 	const { removeUser, addUser } = useContext(UserContext);
 
@@ -20,21 +21,20 @@ function PrivateRoute({ children, ...rest }) {
 
 			if (!storedSession) {
 				// No stored session
-				removeSessionDetails();
-				openFeedback('info', 'Login to continue');
 				removeUser();
 				setLoggedInState(false);
 			} else {
 				if (currentDate > storedSession.expiresIn) {
 					// Session Expired
 					removeSessionDetails();
-
-					openFeedback('info', 'Login to continue');
 					removeUser();
+
 					setLoggedInState(false);
 				} else {
 					// Session exists and is not expired
+					openFeedback('info', 'You are already logged in');
 					addUser(storedSession);
+
 					setLoggedInState(true);
 				}
 			}
@@ -45,14 +45,13 @@ function PrivateRoute({ children, ...rest }) {
 	return (
 		<Route
 			{...rest}
-			render={({ location }) =>
-				loggedInState ? (
+			render={() =>
+				!loggedInState ? (
 					children
 				) : (
 					<Redirect
 						to={{
-							pathname: '/',
-							state: { oldPath: location },
+							pathname: '/newsStand',
 						}}
 					/>
 				)
@@ -61,4 +60,4 @@ function PrivateRoute({ children, ...rest }) {
 	);
 }
 
-export default PrivateRoute;
+export default RestrictedRoute;
