@@ -1,11 +1,13 @@
 import { Dialog, Transition } from '@headlessui/react';
-import React from 'react';
+import React, { useContext } from 'react';
+import { LoadingIndicatorContext } from '../../../contexts/LoadingIndicatorProvider';
 
-const LoadingIndicator = ({ contextVariables, setContextVariables }) => {
+const LoadingIndicator = () => {
+	const { indicatorState } = useContext(LoadingIndicatorContext);
 	return (
-		<Transition.Root show={contextVariables.loadingIndicatorState}>
+		<Transition.Root show={indicatorState}>
 			<Dialog
-				open={contextVariables.loadingIndicatorState}
+				open={indicatorState}
 				onClose={() => null}
 				className="fixed z-10 inset-0 overflow-y-auto text-center"
 			>

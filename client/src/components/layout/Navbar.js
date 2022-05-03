@@ -1,14 +1,15 @@
 import React from 'react';
 import Logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
-import AppContext from '../utils/AppContext';
+import { UserContext } from '../../contexts/UserProvider';
+import { SignoutModalContext } from '../../contexts/SignoutModalProvider';
 
 function Navbar() {
-	const { contextVariables, setContextVariables } =
-		React.useContext(AppContext);
+	const { user } = React.useContext(UserContext);
+	const { openModal } = React.useContext(SignoutModalContext);
 	return (
 		<>
-			{contextVariables.loggedIn ? (
+			{Object.keys(user).length > 0 ? (
 				// Logged in
 				<nav className="bg-white h-14 shadow fixed w-full z-10">
 					<div className="px-6 items-center flex h-14">
@@ -25,12 +26,7 @@ function Navbar() {
 						<Link
 							to="#/"
 							className="text-[#251A6A] font-bold text-sm"
-							onClick={() =>
-								setContextVariables({
-									...contextVariables,
-									signOutModalState: true,
-								})
-							}
+							onClick={openModal}
 						>
 							sign out
 						</Link>

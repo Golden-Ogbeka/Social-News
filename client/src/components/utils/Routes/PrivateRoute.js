@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import { FeedbackContext } from '../../../contexts/FeedbackProvider';
+import { UserContext } from '../../../contexts/UserProvider';
 import {
 	getSessionDetails,
 	removeSessionDetails,
 } from '../../../functions/userSession';
-import AppContext from '../AppContext';
 
 function PrivateRoute({ children, ...rest }) {
-	const { contextVariables, setContextVariables } =
-		React.useContext(AppContext);
 	const [loggedInState, setLoggedInState] = React.useState(true);
+
+	const { openFeedback } = useContext(FeedbackContext);
+	const { removeUser, addUser } = useContext(UserContext);
 
 	React.useEffect(() => {
 		const verifyLoginState = () => {
@@ -19,39 +21,20 @@ function PrivateRoute({ children, ...rest }) {
 			if (!storedSession) {
 				// No stored session
 				removeSessionDetails();
-				setContextVariables({
-					...contextVariables,
-					loggedIn: false,
-					feedback: {
-						...contextVariables.feedback,
-						open: true,
-						message: 'Login to continue',
-						type: 'info',
-					},
-				});
+				openFeedback('info', 'Login to continue');
+				removeUser();
 				setLoggedInState(false);
 			} else {
 				if (currentDate > storedSession.expiresIn) {
 					// Session Expired
 					removeSessionDetails();
 
-					setContextVariables({
-						...contextVariables,
-						loggedIn: false,
-						feedback: {
-							...contextVariables.feedback,
-							open: true,
-							message: 'Login to continue',
-							type: 'info',
-						},
-					});
+					openFeedback('info', 'Login to continue');
+					removeUser();
 					setLoggedInState(false);
 				} else {
 					// Session exists and is not expired
-					setContextVariables({
-						...contextVariables,
-						loggedIn: true,
-					});
+					addUser(storedSession);
 					setLoggedInState(true);
 				}
 			}

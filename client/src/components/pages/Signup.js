@@ -2,36 +2,37 @@ import React from 'react';
 import BannerImage from '../../assets/banner.jpeg';
 import { UserIcon } from '@heroicons/react/outline';
 import axios from 'axios';
-import AppContext from '../utils/AppContext';
 import TextInput from '../common/TextInput/TextInput';
 import Button from '../common/Button/Button';
 import { API_URL } from '../../functions/environmentVariables';
 import Navbar from '../layout/Navbar';
+import { FeedbackContext } from '../../contexts/FeedbackProvider';
+import { LoadingIndicatorContext } from '../../contexts/LoadingIndicatorProvider';
+import { useHistory } from 'react-router-dom';
 
 function Signup() {
-	const { contextVariables, setContextVariables } =
-		React.useContext(AppContext);
+	const { openFeedback } = React.useContext(FeedbackContext);
+	const { openLoadingIndicator, closeLoadingIndicator } = React.useContext(
+		LoadingIndicatorContext
+	);
+
 	const [inputValues, setInputValues] = React.useState({
 		name: '',
 		email: '',
 		password: '',
 	});
+
+	const history = useHistory();
+
 	const signupUser = async e => {
 		e.preventDefault();
+		openLoadingIndicator();
 		if (
 			inputValues.name === '' ||
 			inputValues.email === '' ||
 			inputValues.password === ''
 		) {
-			return setContextVariables({
-				...contextVariables,
-				feedback: {
-					...contextVariables.feedback,
-					open: true,
-					type: 'error',
-					message: 'Incomplete fields',
-				},
-			});
+			return openFeedback('error', 'Incomplete fields');
 		}
 		try {
 			const response = await axios.post(`${API_URL}/user/register`, {
@@ -40,30 +41,18 @@ function Signup() {
 				password: inputValues.password,
 			});
 			if (response.data.status === 'success') {
-				console.log(response.data);
-				setContextVariables({
-					...contextVariables,
-					feedback: {
-						...contextVariables.feedback,
-						open: true,
-						type: 'success',
-						message: response.data.message,
-					},
-				});
+				history.push('/signin');
+				return openFeedback('success', response.data.message);
 			}
 		} catch (error) {
-			setContextVariables({
-				...contextVariables,
-				feedback: {
-					...contextVariables.feedback,
-					open: true,
-					type: 'error',
-					message: error.response?.data
-						? error.response.data.message
-						: 'Request unsuccessful',
-				},
-			});
+			openFeedback(
+				'error',
+				error.response?.data
+					? error.response.data.message
+					: 'Request unsuccessful'
+			);
 		}
+		closeLoadingIndicator();
 	};
 
 	const handleInput = e => {

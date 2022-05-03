@@ -11,11 +11,12 @@ import {
 } from '@heroicons/react/outline';
 
 import { Link, NavLink } from 'react-router-dom';
-import AppContext from '../utils/AppContext';
+
+import { SignoutModalContext } from '../../contexts/SignoutModalProvider';
 
 function Sidebar() {
-	const { contextVariables, setContextVariables } =
-		React.useContext(AppContext);
+	const { openModal } = React.useContext(SignoutModalContext);
+
 	return (
 		<nav className="w-[15%] bg-white h-full fixed mt-14 shadow-inner hidden lg:block">
 			<NavLink
@@ -114,12 +115,7 @@ function Sidebar() {
 					backgroundColor: '#251A6A',
 					color: 'white',
 				}}
-				onClick={() =>
-					setContextVariables({
-						...contextVariables,
-						signOutModalState: true,
-					})
-				}
+				onClick={openModal}
 			>
 				<LogoutIcon width={24} height={24} className="mr-5" />
 				<span>Sign out</span>

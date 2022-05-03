@@ -1,12 +1,12 @@
 import { Popover } from '@headlessui/react/dist';
 import { MenuIcon } from '@heroicons/react/outline';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import AppContext from '../utils/AppContext';
+import { SignoutModalContext } from '../../contexts/SignoutModalProvider';
 
 function FloatingAccessButton() {
-	const { contextVariables, setContextVariables } =
-		React.useContext(AppContext);
+	const { openModal } = useContext(SignoutModalContext);
+
 	return (
 		<>
 			<Popover className=" bottom-5 right-5 lg:hidden z-10 fixed">
@@ -78,13 +78,7 @@ function FloatingAccessButton() {
 							<Link
 								to="#/"
 								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
-								onClick={() =>
-									setContextVariables({
-										...contextVariables,
-
-										signOutModalState: true,
-									})
-								}
+								onClick={openModal}
 							>
 								Sign out
 							</Link>

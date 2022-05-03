@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import { FeedbackContext } from '../../../contexts/FeedbackProvider';
+import { UserContext } from '../../../contexts/UserProvider';
 import {
 	getSessionDetails,
 	removeSessionDetails,
 } from '../../../functions/userSession';
-import AppContext from '../AppContext';
 
 function RestrictedRoute({ children, ...rest }) {
 	// To prevent admin from going back to login pages
-	const { contextVariables, setContextVariables } =
-		React.useContext(AppContext);
+
 	const [loggedInState, setLoggedInState] = React.useState(false);
+	const { openFeedback } = useContext(FeedbackContext);
+	const { removeUser, addUser } = useContext(UserContext);
 
 	React.useEffect(() => {
 		const verifyLoginState = () => {
@@ -19,32 +21,20 @@ function RestrictedRoute({ children, ...rest }) {
 
 			if (!storedSession) {
 				// No stored session
-				setContextVariables({
-					...contextVariables,
-					loggedIn: false,
-				});
+				removeUser();
 				setLoggedInState(false);
 			} else {
 				if (currentDate > storedSession.expiresIn) {
 					// Session Expired
 					removeSessionDetails();
-					setContextVariables({
-						...contextVariables,
-						loggedIn: false,
-					});
+					removeUser();
+
 					setLoggedInState(false);
 				} else {
 					// Session exists and is not expired
-					setContextVariables({
-						...contextVariables,
-						loggedIn: true,
-						feedback: {
-							...contextVariables.feedback,
-							open: true,
-							message: 'You are already logged in',
-							type: 'info',
-						},
-					});
+					openFeedback('info', 'You are already logged in');
+					addUser(storedSession);
+
 					setLoggedInState(true);
 				}
 			}

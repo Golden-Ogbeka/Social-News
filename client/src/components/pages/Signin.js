@@ -2,17 +2,23 @@ import React from 'react';
 import BannerImage from '../../assets/banner.jpeg';
 import { UserIcon } from '@heroicons/react/outline';
 import axios from 'axios';
-import AppContext from '../utils/AppContext';
 import { useHistory } from 'react-router-dom';
 import TextInput from '../common/TextInput/TextInput';
 import Button from '../common/Button/Button';
 import { API_URL } from '../../functions/environmentVariables';
 import { storeSessionDetails } from '../../functions/userSession';
 import Navbar from '../layout/Navbar';
+import { UserContext } from '../../contexts/UserProvider';
+import { FeedbackContext } from '../../contexts/FeedbackProvider';
+import { LoadingIndicatorContext } from '../../contexts/LoadingIndicatorProvider';
 
 function Signin() {
-	const { contextVariables, setContextVariables } =
-		React.useContext(AppContext);
+	const { addUser } = React.useContext(UserContext);
+	const { openFeedback } = React.useContext(FeedbackContext);
+	const { openLoadingIndicator, closeLoadingIndicator } = React.useContext(
+		LoadingIndicatorContext
+	);
+
 	const [inputValues, setInputValues] = React.useState({
 		email: '',
 		password: '',
@@ -23,16 +29,9 @@ function Signin() {
 
 	const signinUser = async e => {
 		e.preventDefault();
+		openLoadingIndicator();
 		if (inputValues.email === '' || inputValues.password === '') {
-			return setContextVariables({
-				...contextVariables,
-				feedback: {
-					...contextVariables.feedback,
-					open: true,
-					type: 'error',
-					message: 'Incomplete fields',
-				},
-			});
+			openFeedback('error', 'Incomplete fields');
 		}
 		try {
 			const response = await axios.post(`${API_URL}/user/login`, {
@@ -40,36 +39,31 @@ function Signin() {
 				password: inputValues.password,
 			});
 			if (response.data.status === 'success') {
-				setContextVariables({
-					...contextVariables,
-					feedback: {
-						...contextVariables.feedback,
-						open: true,
-						type: 'success',
-						message: response.data.message,
-					},
-					loggedIn: true,
-				});
+				openFeedback('success', response.data.message);
+
+				let expirationDate =
+					new Date().getTime() + 1000 * 60 * 60 * 24 * 5; //5 days
+
+				const userSession = {
+					adminDetails: response.data.User,
+					expiresIn: expirationDate,
+				};
+				addUser(userSession);
 
 				// set local storage
-				storeSessionDetails(response.data.User);
+				storeSessionDetails(userSession);
 
-				history.push(oldPath || '/newsStand');
+				return history.push(oldPath || '/newsStand');
 			}
 		} catch (error) {
-			console.log(error);
-			setContextVariables({
-				...contextVariables,
-				feedback: {
-					...contextVariables.feedback,
-					open: true,
-					type: 'error',
-					message: error.response?.data
-						? error.response.data.message
-						: 'Request unsuccessful',
-				},
-			});
+			openFeedback(
+				'error',
+				error.response?.data
+					? error.response.data.message
+					: 'Request unsuccessful'
+			);
 		}
+		closeLoadingIndicator();
 	};
 
 	const handleInput = e => {
