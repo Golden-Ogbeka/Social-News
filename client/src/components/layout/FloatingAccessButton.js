@@ -14,79 +14,70 @@ function FloatingAccessButton() {
 					<button className="w-16 h-16 bg-[#251A6A]  rounded-full text-white justify-center flex items-center focus:bg-purple-500 ">
 						<MenuIcon className="w-8 h-8" />
 					</button>
-				</Popover.Button>
 
-				<Popover.Panel className="absolute bottom-20 right-0 z-10  rounded-lg shadow-lg">
-					<div className="bg-white w-36 h-full flex flex-col p-4 font-sans">
-						<Popover.Button className="mb-2  text-right">
+					<Popover.Panel className="absolute bottom-20 right-0 z-10  rounded-lg shadow-lg">
+						<div className="bg-white w-36 h-full flex flex-col p-4 font-sans">
 							<Link
 								to="/newsStand"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2 text-right"
 							>
 								News Stand
 							</Link>
-						</Popover.Button>
-						<Popover.Button className="mb-2 text-right">
+
 							<Link
 								to="/profile"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2 text-right"
 							>
 								Profile
 							</Link>
-						</Popover.Button>
-						<Popover.Button className="mb-2 text-right">
+
 							<Link
 								to="/posts"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2 text-right"
 							>
 								Posts
 							</Link>
-						</Popover.Button>
-						<Popover.Button className="mb-2 text-right">
+
 							<Link
 								to="/followers"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2 text-right"
 							>
 								Followers
 							</Link>
-						</Popover.Button>
-						<Popover.Button className="mb-2 text-right">
+
 							<Link
 								to="/mentors"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2 text-right"
 							>
 								Mentors
 							</Link>
-						</Popover.Button>
-						<Popover.Button className="mb-2 text-right">
+
 							<Link
 								to="/search"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2 text-right"
 							>
 								Search
 							</Link>
-						</Popover.Button>
-						<Popover.Button className="mb-2 text-right">
+
 							<Link
 								to="/settings"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2 text-right"
 							>
 								Settings
 							</Link>
-						</Popover.Button>
-						<Popover.Button className="text-right">
+
 							<Link
 								to="#/"
-								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2"
+								className="text-lg text-gray-500 focus:bg-purple-50 focus:text-[#251A6A] mb-2 text-right"
 								onClick={openModal}
 							>
 								Sign out
 							</Link>
-						</Popover.Button>
-					</div>
+						</div>
 
-					<img src="/solutions.jpg" alt="" />
-				</Popover.Panel>
+						<img src="/solutions.jpg" alt="" />
+					</Popover.Panel>
+				</Popover.Button>
 			</Popover>
 		</>
 	);

@@ -53,7 +53,7 @@ function Signin() {
 				// set local storage
 				storeSessionDetails(userSession);
 
-				return history.push(oldPath || '/newsStand');
+				history.push(oldPath || '/newsStand');
 			}
 		} catch (error) {
 			openFeedback(
@@ -85,8 +85,8 @@ function Signin() {
 					}}
 				/>
 
-				<div className="bg-white absolute md:bottom-28 bottom-0 md:left-1/3 w-2/3 md:w-1/3 flex items-center flex-col  shadow-md rounded">
-					<div className="mt-10 ml-10 mr-10 mb-5 flex items-center flex-col">
+				<div className="bg-white absolute md:bottom-60 bottom-40 lg:left-1/3 w-2/3 lg:w-1/3 flex items-center flex-col  shadow-md rounded pt-5">
+					<div className=" flex items-center flex-col">
 						{/* Avatar */}
 						<div
 							className="h-16 w-16 flex justify-center items-center shadow-xl"

@@ -17,7 +17,6 @@ router.get('/api/users', async (req, res) => {
 });
 
 router.post('/api/user/login', async (req, res) => {
-	console.log('OK');
 	try {
 		if (!req.body.email || !req.body.password) {
 			return res.status(400).json({

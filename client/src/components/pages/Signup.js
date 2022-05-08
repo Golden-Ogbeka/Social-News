@@ -81,8 +81,8 @@ function Signup() {
 			>
 				sd
 			</div> */}
-				<div className="bg-white absolute md:bottom-28 bottom-0 md:left-1/3 w-2/3 md:w-1/3 flex items-center flex-col  shadow-md rounded">
-					<div className="mt-10 ml-10 mr-10 mb-5 flex items-center flex-col">
+				<div className="bg-white absolute md:bottom-60 bottom-40 lg:left-1/3 w-2/3 lg:w-1/3 flex items-center flex-col  shadow-md rounded pt-5">
+					<div className="flex items-center flex-col">
 						{/* Avatar */}
 						<div
 							className="h-16 w-16 flex justify-center items-center shadow-xl"
@@ -96,7 +96,7 @@ function Signup() {
 							SIGN UP
 						</div>
 					</div>
-					<form className="flex-col flex items-center w-full pl-5 pr-5 md:pl-20 md:pr-20">
+					<form className="flex-col flex items-center w-full pl-5 pr-5 md:pl-20 md:pr-20  gap-2">
 						<TextInput
 							placeholder="Full name"
 							type="text"
