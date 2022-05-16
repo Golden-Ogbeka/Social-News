@@ -8,8 +8,15 @@ const UserSchema = new Schema({
 		unique: true,
 		required: true,
 	},
-	password: { type: String, select: false, required: true },
-	verificationCode: { type: String, select: false },
+	password: {
+		type: String,
+		// select: false,
+		required: true,
+	},
+	verificationCode: {
+		type: String,
+		// select: false
+	},
 	phone: String,
 	gender: String,
 	address: String,
@@ -26,10 +33,11 @@ UserSchema.set('toJSON', {
 	transform: function (doc, ret, options) {
 		// remove the password of every document before returning the result
 		delete ret.password;
+		delete ret.verificationCode;
 		return ret;
 	},
 });
 
-const User = mongoose.model('User', UserSchema);
+const UserModel = mongoose.model('User', UserSchema);
 
-export default User;
+export default UserModel;

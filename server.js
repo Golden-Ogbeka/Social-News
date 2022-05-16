@@ -5,7 +5,7 @@ import path from 'path';
 import db from './db/index.js';
 import cors from 'cors';
 import helmet from 'helmet';
-import UserRouter from './routes/user.js';
+import AppRouters from './routes/index.js';
 
 // To use __dirname and __filename when node app is in module mode
 import { fileURLToPath } from 'url';
@@ -23,7 +23,7 @@ server.use(cors());
 server.use(helmet());
 
 // Routes
-server.use('/', [UserRouter]);
+server.use('/api', AppRouters);
 
 // Added after all routes because of React's routing
 server.use(express.static(path.join(__dirname, 'client', 'build')));
