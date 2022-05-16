@@ -32,7 +32,6 @@ export const LoginUser = async (req, res) => {
 
 		return sendResponse(res, 200, 'Sign in successful', User);
 	} catch (error) {
-		console.log(error);
 		return sendResponse(res, 500, "Couldn't login", error);
 	}
 };

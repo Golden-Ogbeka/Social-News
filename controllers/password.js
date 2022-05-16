@@ -1,14 +1,15 @@
 import { validationResult } from 'express-validator';
+import { hashPassword } from '../functions/authentication/passwordHash.js';
 import sendEmail from '../functions/email/sendEmail.js';
 import generateRandomValues from '../functions/others/generateRamdomValues.js';
 import sendResponse from '../functions/response/sendResponse.js';
+import validationErrorCheck from '../functions/response/validationErrorCheck.js';
 import UserModel from '../models/User.js';
 
 export const ResetPassword = async (req, res) => {
 	try {
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return sendResponse(res, 400, 'Incomplete Fields');
+		if (validationErrorCheck(req)) {
+			return sendResponse(res, 400, validationErrorCheck(req));
 		}
 
 		const { email } = req.body;
@@ -41,9 +42,34 @@ export const ResetPassword = async (req, res) => {
 
 		return sendResponse(res, 200, 'Successful. Verification code sent');
 	} catch (error) {
-		console.log(error);
 		return sendResponse(res, 500, "Couldn't reset password", error);
 	}
 };
 
-export const UpdateResetPasswor = async (req, res) => {};
+export const UpdateResetPassword = async (req, res) => {
+	try {
+		if (validationErrorCheck(req)) {
+			return sendResponse(res, 400, validationErrorCheck(req));
+		}
+		const { email, verificationCode, password } = req.body;
+
+		// Find user
+		const User = await UserModel.findOne({ email, verificationCode });
+		if (!User) {
+			return sendResponse(res, 404, 'Verification code is incorrect');
+		}
+
+		// Hash new password, generate new verification code and save
+		const hashedPassword = hashPassword(password);
+		const newVerificationCode = generateRandomValues().substring(0, 6);
+
+		User.password = hashedPassword;
+		User.verificationCode = newVerificationCode;
+
+		await User.save();
+
+		return sendResponse(res, 200, 'Password updated successfully');
+	} catch (error) {
+		return sendResponse(res, 500, "Couldn't update password", error);
+	}
+};
