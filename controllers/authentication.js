@@ -3,12 +3,14 @@ import {
 	hashPassword,
 } from '../functions/authentication/passwordHash.js';
 import sendResponse from '../functions/response/sendResponse.js';
+import validationErrorCheck from '../functions/response/validationErrorCheck.js';
 import UserModel from '../models/User.js';
+import JWT from 'jsonwebtoken';
 
 export const LoginUser = async (req, res) => {
 	try {
-		if (!req.body.email || !req.body.password) {
-			return sendResponse(res, 400, 'Incomplete Fields');
+		if (validationErrorCheck(req)) {
+			return sendResponse(res, 400, validationErrorCheck(req));
 		}
 
 		// Find email
@@ -30,7 +32,21 @@ export const LoginUser = async (req, res) => {
 			return sendResponse(res, 404, 'Invalid email or password');
 		}
 
-		return sendResponse(res, 200, 'Sign in successful', User);
+		// Generate user token and send details to user
+		const userToken = JWT.sign(
+			{
+				email: req.body.email,
+			},
+			process.env.JWT_SECRET,
+			{
+				expiresIn: '7d',
+				issuer: 'Social Share',
+			}
+		);
+
+		return sendResponse(res, 200, 'Sign in successful', {
+			User: { User, token: userToken },
+		});
 	} catch (error) {
 		return sendResponse(res, 500, "Couldn't login", error);
 	}
@@ -38,8 +54,8 @@ export const LoginUser = async (req, res) => {
 
 export const RegisterUser = async (req, res) => {
 	try {
-		if (!req.body.email || !req.body.password || !req.body.name) {
-			return sendResponse(res, 400, 'Incomplete Fields');
+		if (validationErrorCheck(req)) {
+			return sendResponse(res, 400, validationErrorCheck(req));
 		}
 		const { name, email, password } = req.body;
 

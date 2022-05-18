@@ -30,15 +30,10 @@ PasswordRouter.post(
 			.withMessage('Email is required')
 			.bail(),
 		body('verificationCode')
-			.isString()
-			.withMessage('Invalid verification code')
 			.notEmpty()
 			.withMessage('Verification code is required')
 			.bail(),
 		body('password')
-			.isString()
-			.withMessage('Invalid password')
-			.bail()
 			.notEmpty()
 			.withMessage('Password is required')
 			.bail()
