@@ -16,6 +16,8 @@ import AppContextProvider from './contexts/AppContextProvider';
 import General from './components/layout/General';
 import RestrictedRoute from './routes/RestrictedRoute';
 import PrivateRoute from './routes/PrivateRoute';
+import ResetPassword from './components/pages/ResetPassword/ResetPassword';
+import ResetPasswordUpdate from './components/pages/ResetPassword/ResetPasswordUpdate';
 
 function App() {
 	return (
@@ -32,6 +34,13 @@ function App() {
 				<RestrictedRoute path="/signup" exact>
 					<Signup />
 				</RestrictedRoute>
+				<RestrictedRoute path="/reset-password" exact>
+					<ResetPassword />
+				</RestrictedRoute>
+				<RestrictedRoute path="/reset-password-update" exact>
+					<ResetPasswordUpdate />
+				</RestrictedRoute>
+
 				<PrivateRoute path="/newsStand" exact>
 					<NewsStand />
 				</PrivateRoute>

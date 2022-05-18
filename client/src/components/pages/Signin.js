@@ -2,7 +2,7 @@ import React from 'react';
 import BannerImage from '../../assets/banner.jpeg';
 import { UserIcon } from '@heroicons/react/outline';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import TextInput from '../common/TextInput/TextInput';
 import Button from '../common/Button/Button';
 import { API_URL } from '../../functions/environmentVariables';
@@ -96,7 +96,7 @@ function Signin() {
 						>
 							<UserIcon className="text-[#251A6A] h-5 w-5 " />
 						</div>
-						<div className="font-sans text-base font-semibold mt-5 text-[#251A6A]">
+						<div className="font-sans text-base font-semibold mt-5 mb-5 text-[#251A6A]">
 							SIGN IN
 						</div>
 					</div>
@@ -124,6 +124,9 @@ function Signin() {
 							SIGN IN
 						</Button>
 					</form>
+					<aside className="font-sans text-base font-semibold mb-5 text-[#251A6A]">
+						<Link to="/reset-password">Reset password</Link>
+					</aside>
 				</div>
 			</div>
 		</>
