@@ -81,7 +81,6 @@ export const UpdatePost = async (req, res) => {
 			Post: newPost,
 		});
 	} catch (error) {
-		console.log(error);
 		return sendResponse(res, 500, "Couldn't update post", error);
 	}
 };
