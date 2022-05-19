@@ -17,12 +17,7 @@ const UserSchema = new Schema({
 		type: String,
 		// select: false
 	},
-	phone: String,
-	gender: String,
-	address: String,
-	imageUrl: String,
-	isVerified: Boolean,
-	isActive: Boolean,
+	imageUrl: { type: String, default: 'https://www.gravatar.com/avatar' },
 	createdAt: {
 		type: Date,
 		default: new Date(),
