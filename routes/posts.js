@@ -7,7 +7,7 @@ import {
 	UpdatePost,
 } from '../controllers/posts.js';
 import postIsUnique from '../middleware/posts/postIsUnique.js';
-import verifyPostID from '../middleware/posts/verifyPostID.js';
+import verifyMongoID from '../middleware/posts/verifyMongoID.js';
 import verifyUser from '../middleware/user/verifyUser.js';
 
 const PostRouter = express.Router();
@@ -97,7 +97,7 @@ PostRouter.put(
 			.trim()
 			.escape(),
 	],
-	verifyPostID,
+	verifyMongoID,
 	UpdatePost
 );
 

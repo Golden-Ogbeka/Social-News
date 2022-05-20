@@ -10,15 +10,29 @@ const UserSchema = new Schema({
 	},
 	password: {
 		type: String,
-		// select: false,
 		required: true,
 	},
 	verificationCode: {
 		type: String,
-		// select: false
 	},
 	imageUrl: { type: String, default: 'https://www.gravatar.com/avatar' },
+	followers: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'User',
+		},
+	],
+	mentors: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'User',
+		},
+	],
 	createdAt: {
+		type: Date,
+		default: new Date(),
+	},
+	updatedAt: {
 		type: Date,
 		default: new Date(),
 	},

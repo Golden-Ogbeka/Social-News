@@ -8,12 +8,11 @@ import PostModel from '../models/Post.js';
 // Get all posts
 export const GetAllPosts = async (req, res) => {
 	try {
-		const Posts = await PostModel.find();
+		const Posts = await PostModel.find().populate('user');
 		return sendResponse(res, 200, 'Posts retrieved Successfully', {
 			Posts: Posts,
 		});
 	} catch (error) {
-		console.log(error);
 		return sendResponse(res, 500, "Couldn't get posts", error);
 	}
 };
@@ -23,7 +22,9 @@ export const GetUserPosts = async (req, res) => {
 	try {
 		const userEmail = await getUserFromToken(req);
 
-		const Posts = await PostModel.find({ email: userEmail });
+		const Posts = await PostModel.find({ email: userEmail }).populate(
+			'user'
+		);
 		return sendResponse(res, 200, 'Posts retrieved Successfully', {
 			Posts: Posts,
 		});
@@ -47,8 +48,7 @@ export const CreatePost = async (req, res) => {
 			title,
 			subtitle,
 			content,
-			userId: User._id,
-			userImageURL: User.imageUrl,
+			user: User._id,
 		});
 
 		return sendResponse(res, 200, 'Post created Successfully', {
@@ -75,6 +75,8 @@ export const UpdatePost = async (req, res) => {
 		if (subtitle) Post.subtitle = subtitle;
 		if (content) Post.content = content;
 
+		// Update post's date
+		Post.updatedAt = new Date();
 		const newPost = await Post.save();
 
 		return sendResponse(res, 200, 'Post updated Successfully', {

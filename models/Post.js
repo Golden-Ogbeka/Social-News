@@ -6,11 +6,14 @@ const PostSchema = new Schema({
 	subtitle: { type: String, required: true },
 	content: { type: String, required: true },
 	views: { type: Number, required: true, default: 0 },
-	comments: { type: Array, default: [] },
-	userId: { type: String, required: true },
-	userImageURL: { type: String, required: true },
+	comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+	user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
 	isDeleted: { type: Boolean, required: true, default: false },
 	createdAt: {
+		type: Date,
+		default: new Date(),
+	},
+	updatedAt: {
 		type: Date,
 		default: new Date(),
 	},

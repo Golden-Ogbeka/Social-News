@@ -74,6 +74,7 @@ export const RegisterUser = async (req, res) => {
 		});
 		return sendResponse(res, 200, 'Sign up successful', User);
 	} catch (error) {
+		console.log(error);
 		return sendResponse(res, 500, "Couldn't register user", error);
 	}
 };
