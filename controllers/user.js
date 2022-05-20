@@ -8,7 +8,7 @@ import UserModel from '../models/User.js';
 // Get all users
 export const GetUsers = async (req, res) => {
 	try {
-		const Users = await UserModel.find()
+		const Users = await UserModel.find({ isDeleted: false })
 			.populate('followers')
 			.populate('mentors');
 		return sendResponse(res, 200, 'Users retrieved successfully', {
@@ -40,7 +40,10 @@ export const FollowUser = async (req, res) => {
 			return sendResponse(res, 400, 'You cannot follow yourself');
 
 		// Get details of person to follow
-		const userToFollow = await UserModel.findOne({ _id: ObjectId(id) });
+		const userToFollow = await UserModel.findOne({
+			_id: ObjectId(id),
+			isDeleted: false,
+		});
 
 		if (!userToFollow) return sendResponse(res, 404, 'User not found');
 
@@ -111,7 +114,10 @@ export const UnFollowUser = async (req, res) => {
 			return sendResponse(res, 400, 'You cannot unfollow yourself');
 
 		// Get details of person to follow
-		const userToFollow = await UserModel.findOne({ _id: ObjectId(id) });
+		const userToFollow = await UserModel.findOne({
+			_id: ObjectId(id),
+			isDeleted: false,
+		});
 
 		if (!userToFollow) return sendResponse(res, 404, 'User not found');
 
@@ -147,5 +153,29 @@ export const UnFollowUser = async (req, res) => {
 		});
 	} catch (error) {
 		return sendResponse(res, 500, "Couldn't unfollow user", error);
+	}
+};
+
+// Delete User
+export const DeleteUser = async (req, res) => {
+	try {
+		const userEmail = getUserFromToken(req);
+		const User = await getUserDetails({ email: userEmail });
+
+		const UserFound = await UserModel.findOne({
+			_id: ObjectId(User._id),
+		});
+
+		if (!UserFound) return sendResponse(res, 404, 'User not found');
+
+		await UserModel.findOneAndUpdate(
+			{ _id: ObjectId(User._id) },
+			{ $set: { isDeleted: true } }
+		);
+
+		return sendResponse(res, 200, 'User deleted successfully');
+		// Remove token and logout user in frontend
+	} catch (error) {
+		return sendResponse(res, 500, "Couldn't delete user", error);
 	}
 };

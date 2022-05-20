@@ -8,7 +8,7 @@ export default function verifyUser(req, res, next) {
 
 		if (token) {
 			token = token.replace('Bearer ', '');
-			const tokein = JWT.verify(token, process.env.JWT_SECRET);
+			JWT.verify(token, process.env.JWT_SECRET);
 		}
 
 		next();

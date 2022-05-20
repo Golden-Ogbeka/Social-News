@@ -6,9 +6,8 @@ const PostSchema = new Schema({
 	subtitle: { type: String, required: true },
 	content: { type: String, required: true },
 	views: { type: Number, required: true, default: 0 },
-	comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
 	user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-	isDeleted: { type: Boolean, required: true, default: false },
+	isDeleted: { type: Boolean, default: false },
 	createdAt: {
 		type: Date,
 		default: new Date(),

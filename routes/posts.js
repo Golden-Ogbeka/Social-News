@@ -2,7 +2,10 @@ import express from 'express';
 import { body } from 'express-validator';
 import {
 	CreatePost,
+	DeletePost,
 	GetAllPosts,
+	GetPost,
+	GetPostComments,
 	GetUserPosts,
 	UpdatePost,
 } from '../controllers/posts.js';
@@ -14,6 +17,9 @@ const PostRouter = express.Router();
 
 // All posts
 PostRouter.get('/posts', verifyUser, GetAllPosts);
+
+// Get Post
+PostRouter.get('/post', verifyUser, verifyMongoID, GetPost);
 
 // User's posts
 PostRouter.get('/posts/user', verifyUser, GetUserPosts);
@@ -63,15 +69,6 @@ PostRouter.put(
 	'/post/update',
 	verifyUser,
 	[
-		body('id')
-			.notEmpty()
-			.withMessage('Post ID is required')
-			.bail()
-			.isString()
-			.withMessage('Invalid post ID')
-			.bail()
-			.trim()
-			.escape(),
 		body('title')
 			.optional()
 			.isString()
@@ -100,5 +97,11 @@ PostRouter.put(
 	verifyMongoID,
 	UpdatePost
 );
+
+// Get post's comments
+PostRouter.get('/post/comments', verifyUser, verifyMongoID, GetPostComments);
+
+// Delete Post
+PostRouter.delete('/post', verifyUser, verifyMongoID, DeletePost);
 
 export default PostRouter;

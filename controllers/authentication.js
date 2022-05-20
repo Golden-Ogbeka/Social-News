@@ -16,6 +16,7 @@ export const LoginUser = async (req, res) => {
 		// Find email
 		const User = await UserModel.findOne({
 			email: req.body.email,
+			isDeleted: false,
 		});
 
 		if (!User) {
@@ -61,8 +62,17 @@ export const RegisterUser = async (req, res) => {
 
 		const hashedPassword = hashPassword(password);
 
-		let existingUser = await UserModel.findOne({ email });
+		// Check for deleted user and set isDeleted to false
+		let deletedUser = await UserModel.findOne({ email, isDeleted: true });
+		if (deletedUser) {
+			deletedUser.isDeleted = false;
+			const newUser = await deletedUser.save();
+			return sendResponse(res, 200, 'Sign up successful', {
+				User: newUser,
+			});
+		}
 
+		let existingUser = await UserModel.findOne({ email });
 		if (existingUser) {
 			return sendResponse(res, 400, 'User already exists');
 		}
@@ -72,7 +82,7 @@ export const RegisterUser = async (req, res) => {
 			email,
 			password: hashedPassword,
 		});
-		return sendResponse(res, 200, 'Sign up successful', User);
+		return sendResponse(res, 200, 'Sign up successful', { User });
 	} catch (error) {
 		console.log(error);
 		return sendResponse(res, 500, "Couldn't register user", error);
