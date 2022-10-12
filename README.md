@@ -14,7 +14,7 @@ A web application where users can create posts and comment on posts from other u
 
 ## Live URL
 
-[https://social-news-by-golden-ogbeka.herokuapp.com/](https://social-news-by-golden-ogbeka.herokuapp.com/)
+[https://social-news.onrender.com/](https://social-news.onrender.com/)
 
 ## API Documentation
 
